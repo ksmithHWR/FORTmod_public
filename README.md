@@ -62,12 +62,12 @@ For Windows operating systems, you can use a non-GNU compiler to run the FORTRAN
    - Threads: posix
    - Exception: seh
  3. Add MinGW to the system path 
-     - (Control Panel --> Advanced System Settings --> Environment Variables --> System Variables --> Path --> Add C:\mingw\mingw64\bin
      - **When adding MinGW, make sure you do not accidentally delete any values already in the Path.**
+     - (Control Panel --> System --> Advanced System Settings --> Environment Variables --> System Variables --> Path --> Edit --> New C:\mingw\mingw64\bin)
  4. To make sure the System Path is updated, restart your computer.
  5. Open a Command Prompt and type `gfortran --verson`. You should get a response that begins: `gcc (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0 ...`
 
-The next tool to get is Ananconda/Miniconda. If already have one of these you are all set (I recommend doing step 4 below to make sure what you have is working correctly). It does not matter whether you have Python 2.X or Python 3.X. Python versioning gets dealt with later in these instructions as a part of the setting up the [conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html). If you don't already have Anaconda/Miniconda, I recommend working with Miniconda Python 2.7 for the Streeter-Phelps model. The following instructions assume you make that choice.
+The next tool to get is Ananconda/Miniconda. If you already have one of these, you are all set (I recommend doing step 4 below to make sure what you have is working correctly). It does not matter whether you have Python 2.X or Python 3.X. Python versioning gets dealt with later in these instructions as a part of the setting up the [conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html). If you don't already have Anaconda/Miniconda, I recommend working with Miniconda Python 2.7 for the Streeter-Phelps model. The following instructions assume you make that choice.
 
  1. Download the [Miniconda](https://conda.io/miniconda.html) .exe installer.
  2. After it downloads, use the default installation options except for the installation location. Install the program to `C:\Miniconda2`.  
@@ -83,7 +83,7 @@ I have tested this with [Ubuntu](https://www.ubuntu.com/) LTS 16.04. If you are 
  1. Open a Terminal and type `sudo apt install gfortran`. 
  2. After the installation is complete (with default options), type `gfortran --version`. You should get a response that begins: `gcc (Ubuntu 5.4.0-6ubuntu1~16.04.10) 5.4.0 20160609 ...`
 
-The next tool to get is Anaconda/Miniconda. If already have one of these you are all set (I recommend doing step 4 below to make sure what you have is working correctly). It does not matter whether you have Python 2.X or Python 3.X. Python versioning gets dealt with later in these instructions as a part of the setting up the [conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html). If you don't already have Anaconda/Miniconda, I recommend working with Miniconda Python 2.7 for the Streeter-Phelps model. The following instructions assume you made that choice.
+The next tool to get is Anaconda/Miniconda. If you already have one of these, you are all set (I recommend doing step 4 below to make sure what you have is working correctly). It does not matter whether you have Python 2.X or Python 3.X. Python versioning gets dealt with later in these instructions as a part of the setting up the [conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html). If you don't already have Anaconda/Miniconda, I recommend working with Miniconda Python 2.7 for the Streeter-Phelps model. The following instructions assume you made that choice.
 
  1. Download the [Miniconda](https://conda.io/miniconda.html) bash installer.
  2. Open a Terminal and change directories to the directory where the bash script was saved. 
@@ -104,7 +104,7 @@ I have tested this with MacOSX 10.10.5 [Yosemite](https://en.wikipedia.org/wiki/
  5. Type `sudo installer -pkg gfortran.pkg -target /`. This will install gfortran.
  6. type `gfortran --version`. You should get a response that begins: `GNU Fortran (GCC) 5.2.0`
 
-The next tool to get is Anaconda/Miniconda. If already have one of these you are all set (I recommend doing step 4 below to make sure what you have is working correctly). It does not matter whether you have Python 2.X or Python 3.X. Python versioning gets dealt with later in these instructions as a part of the setting up the [conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html). If you don't already have Anaconda/Miniconda, I recommend working with Miniconda Python 2.7 for the Streeter-Phelps model. The following instructions assume you made that choice.
+The next tool to get is Anaconda/Miniconda. If you already have one of these, you are all set (I recommend doing step 4 below to make sure what you have is working correctly). It does not matter whether you have Python 2.X or Python 3.X. Python versioning gets dealt with later in these instructions as a part of the setting up the [conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html). If you don't already have Anaconda/Miniconda, I recommend working with Miniconda Python 2.7 for the Streeter-Phelps model. The following instructions assume you made that choice.
 
  1. Download the [Miniconda](https://conda.io/miniconda.html) bash installer.
  2. Open a terminal and change directories to the directory where the bash script was downloaded. 
@@ -133,7 +133,7 @@ In addition to the results being written to Terminal/Command Prompt, a text file
 The purpose of the previous step is to demonstrate that the Fortran code is functional, but what we really want to see is how this works within Python. 
 ##### Python Version of the Model
 Before we can run the Streeter-Phelps model in Python, we need to set up the [environment](https://conda.io/docs/user-guide/tasks/manage-environments.html). This will ensure that you use the correct version of all the packages that work in the background, including F2PY. Open a Terminal/Anaconda Prompt. Note. for Windows users, you need to open Anaconda Prompt, not Command Prompt. Navigate to the `../python`. In that directory are three `.yml` files, one for each operating system. Then follow these two steps:
- 1. Note the file name for your operating system, and type `conda env create -f OS filename` where 'OS filename' is replaced with the appropriate file name (e.g., `fm_win_environment.yml` for Windows). 
+ 1. Note the file name for your operating system, and type `conda env create -f OSfilename` where 'OSfilename' is replaced with the appropriate file name (e.g., `fm_win_environment.yml` for Windows). 
  2. Activate the environment you just created by typing either:
     - `conda activate fm_win` (for Windows)
     - `activate source fm_linux` (for Linux)
@@ -156,7 +156,7 @@ My motivation for figuring out how to run a Fortran model in Python comes from m
  - HELP - a landfill hydrologic model  that simulates water movement into and through a landfill
  - HEC-5Q - a planning model for reservoir systems
 
-I am confident that there are many other models that fit my definition of legacy models. Most of these models were originally developed by state and federal agencies. They were used in projects at the time of development and in some cases they found their way into regulations. Even as new models are developed that achieve the same end goals, these legacy models remain relevant. Updates to existing projects and planning or permitting often require their use. I will also add another reason why the models are still used. **They are good models!** As an industry, we want to have access to these models.
+I am confident that there are many other models that fit my definition of legacy models. Most of these models were originally developed by state and federal agencies. They were used in projects at the time of development, and in some cases they found their way into regulations. Even as new models are developed that achieve the same end goals, these legacy models remain relevant. Updates to existing projects and planning or permitting often require their use. I will also add another reason why the models are still used. **They are good models!** As an industry, we want to have access to these models.
 
 #### Solutions Requirements
 Any new methods for accessing these models requires a few things.
